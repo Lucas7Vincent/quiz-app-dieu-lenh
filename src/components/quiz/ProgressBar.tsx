@@ -7,7 +7,7 @@ interface ProgressBarProps {
   value: number; // 0-100
   className?: string;
   showLabel?: boolean;
-  color?: 'blue' | 'green' | 'amber' | 'red';
+  color?: 'blue' | 'green' | 'amber' | 'red' | 'purple';
   size?: 'sm' | 'md' | 'lg';
 }
 
@@ -16,6 +16,7 @@ const colorMap = {
   green: 'from-emerald-500 to-teal-500',
   amber: 'from-amber-400 to-orange-500',
   red: 'from-red-500 to-rose-500',
+  purple: 'from-violet-500 to-purple-600',
 };
 
 const sizeMap = {

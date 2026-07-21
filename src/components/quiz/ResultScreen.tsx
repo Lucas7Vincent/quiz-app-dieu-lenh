@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Trophy, RotateCcw, Home, CheckCircle2, XCircle, Clock } from 'lucide-react';
+import { Trophy, RotateCcw, Home, CheckCircle2, XCircle, Clock, Dices } from 'lucide-react';
 import Link from 'next/link';
 import { formatTime, getScoreLabel, getScoreColor } from '@/lib/utils';
 import type { QuizResult } from '@/hooks/useQuiz';
@@ -9,10 +9,11 @@ import type { QuizResult } from '@/hooks/useQuiz';
 interface ResultScreenProps {
   result: QuizResult;
   onRetry: () => void;
+  onNewQuiz?: () => void;
   mode?: string;
 }
 
-export function ResultScreen({ result, onRetry, mode }: ResultScreenProps) {
+export function ResultScreen({ result, onRetry, onNewQuiz, mode }: ResultScreenProps) {
   const percentage = Math.round((result.correctCount / result.totalQuestions) * 100);
   const label = getScoreLabel(percentage);
   const color = getScoreColor(percentage);
@@ -84,22 +85,33 @@ export function ResultScreen({ result, onRetry, mode }: ResultScreenProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="flex gap-3 w-full"
+        className="flex flex-col gap-3 w-full"
       >
-        <button
-          onClick={onRetry}
-          className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors"
-        >
-          <RotateCcw size={16} />
-          Làm lại
-        </button>
-        <Link
-          href="/"
-          className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-secondary text-foreground font-semibold text-sm hover:bg-accent transition-colors"
-        >
-          <Home size={16} />
-          Trang chủ
-        </Link>
+        <div className="flex gap-3 w-full">
+          <button
+            onClick={onRetry}
+            className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors"
+          >
+            <RotateCcw size={16} />
+            Làm lại
+          </button>
+          <Link
+            href="/"
+            className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-secondary text-foreground font-semibold text-sm hover:bg-accent transition-colors"
+          >
+            <Home size={16} />
+            Trang chủ
+          </Link>
+        </div>
+        {onNewQuiz && (
+          <button
+            onClick={onNewQuiz}
+            className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-gradient-to-r from-violet-500 to-purple-600 text-white font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-violet-500/20"
+          >
+            <Dices size={16} />
+            Đề mới
+          </button>
+        )}
       </motion.div>
     </motion.div>
   );

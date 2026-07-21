@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
   BookOpen, Zap, CreditCard, BarChart3, Search,
-  RotateCcw, Target, Trophy, Flame, Clock
+  RotateCcw, Target, Trophy, Flame, Clock, Dices
 } from 'lucide-react';
 import { useProgress } from '@/store/progressStore';
 import { Header } from '@/components/layout/Header';
@@ -166,6 +166,14 @@ export default function HomePage() {
             description="100 câu · 90 phút · Không xem đáp án"
             gradient="bg-gradient-to-br from-amber-500/10 to-orange-500/10"
             badge="HOT"
+          />
+          <ModeCard
+            href="/random-quiz"
+            icon={Dices}
+            title="Đề ngẫu nhiên"
+            description="10 câu ngẫu nhiên · Không lặp lại"
+            gradient="bg-gradient-to-br from-violet-500/10 to-purple-500/10"
+            badge="MỚI"
           />
           <ModeCard
             href="/flashcard"

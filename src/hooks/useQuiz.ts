@@ -88,6 +88,12 @@ export function useQuiz({ questions, mode, onComplete }: UseQuizOptions) {
     }
   }, [isLastQuestion]);
 
+  const reset = useCallback(() => {
+    setCurrentIndex(0);
+    setAnswerState({ selected: null, confirmed: false, isCorrect: null });
+    setResults({});
+  }, []);
+
   return {
     currentQuestion,
     currentIndex,
@@ -100,6 +106,7 @@ export function useQuiz({ questions, mode, onComplete }: UseQuizOptions) {
     confirmAnswer,
     nextQuestion,
     skipQuestion,
+    reset,
     progress: questions.length > 0 ? (currentIndex / questions.length) * 100 : 0,
   };
 }

@@ -1627,15 +1627,15 @@
     "answers": [
       {
         "key": "A",
-        "text": "75cm – 60o  –\u001f \u001f\u001f\u001f 20 cm"
+        "text": "75cm – 60 độ – 20 cm"
       },
       {
         "key": "B",
-        "text": "70cm – 65o  – 25 cm"
+        "text": "70cm – 65 độ – 25 cm"
       },
       {
         "key": "C",
-        "text": "75cm – 70o – 30 cm"
+        "text": "75cm – 70 độ – 30 cm"
       }
     ],
     "correctAnswer": "A",
